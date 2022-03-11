@@ -63,7 +63,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${posts[0].userImage}" />
+                    <img src="${post.userImage}" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -120,9 +120,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${posts[0].comments[0].user}
+                          ${post.comments[0].user}
                       </a>
-                      ${posts[0].comments[0].text}
+                      ${post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -139,7 +139,10 @@ const showPosts = (posts) => {
   posts.forEach((post) => {
     const div = createPost(post);
     productsContainer.appendChild(div);
+    console.log(post.userImage);
+
   });
+
 };
 
 const displayLikedPosts = () => {
@@ -147,8 +150,13 @@ const displayLikedPosts = () => {
   likedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
+
+
+
   });
+
 };
+
 
 const displayReportedPosts = () => {
   const reportedPosts = getReportedPosts();
@@ -162,7 +170,7 @@ const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
-  console.log(posts);
+  // console.log(posts);
 }
 
 loadPosts();
