@@ -139,8 +139,6 @@ const showPosts = (posts) => {
   posts.forEach((post) => {
     const div = createPost(post);
     productsContainer.appendChild(div);
-    console.log(post);
-
   });
 
 };
